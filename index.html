@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>だれでもDOOR - 横浜市内専用障害者雇用求人掲示板</title>
+    <!-- Tailwind CSSの読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwindのカスタムテーマ設定（落ち着いた信頼感のある青色をベースにします）
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'Meiryo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* アクセシビリティのためのフォーカスリングのスタイル */
+        :focus-visible {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+        /* タブのトランジション用 */
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- ヘッダー -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-primary-700 flex items-center gap-2">
+                <!-- アイコン (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor">
+                    <path d="M440-440q17 0 28.5-11.5T480-480q0-17-11.5-28.5T440-520q-17 0-28.5 11.5T400-480q0 17 11.5 28.5T440-440ZM280-120v-80l240-40v-445q0-15-9-27t-23-14l-208-34v-80l220 36q44 8 72 41t28 77v512l-320 54Zm-160 0v-80h80v-560q0-34 23.5-57t56.5-23h400q34 0 57 23t23 57v560h80v80H120Zm160-80h400v-560H280v560Z"/></svg>
+                だれでもDOOR
+            </h1>
+            <p class="text-sm text-gray-500 hidden sm:block">横浜市内の障害者雇用のための求人マッチング掲示板</p>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+
+        <div class="mb-8 font-bold text-4xl text-red-700">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FF0000">
+                <path d="M449.5-85Q435-91 423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6q-16 0-30.5-6Zm30.5-74 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm68.5 108.5Q520-343 520-360t-11.5-28.5Q497-400 480-400t-28.5 11.5Q440-377 440-360t11.5 28.5Q463-320 480-320t28.5-11.5ZM480-480Z"/></svg>
+            このWebサイトは開発中です <br>
+            掲載されている求人は実在しません
+        </div>
+        
+        <!-- タブナビゲーション (アクセシビリティに配慮したrole属性を使用) -->
+        <div class="mb-8" role="tablist" aria-label="コンテンツの切り替え">
+            <div class="flex border-b border-gray-300">
+                <!-- 求職者向けタブボタン -->
+                <button 
+                    id="tab-job-seekers" 
+                    class="tab-btn flex-1 py-4 px-6 text-center font-semibold text-lg transition-colors duration-200 border-b-4 border-primary-600 text-primary-700 bg-primary-50 rounded-t-lg"
+                    role="tab" 
+                    aria-selected="true" 
+                    aria-controls="panel-job-seekers"
+                    onclick="switchTab('job-seekers')">
+                    求職者の皆様へ
+                </button>
+                
+                <!-- 企業向けタブボタン -->
+                <button 
+                    id="tab-companies" 
+                    class="tab-btn flex-1 py-4 px-6 text-center font-semibold text-lg text-gray-500 border-b-4 border-transparent hover:text-gray-700 hover:bg-gray-50 rounded-t-lg transition-colors duration-200"
+                    role="tab" 
+                    aria-selected="false" 
+                    aria-controls="panel-companies"
+                    onclick="switchTab('companies')">
+                    企業の皆様へ
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ▼ タブパネル1：求職者向け（求人一覧） ▼ -->
+        <!-- ========================================== -->
+        <div id="panel-job-seekers" class="tab-panel active" role="tabpanel" aria-labelledby="tab-job-seekers">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-2">現在の求人一覧</h2>
+                <p class="text-gray-600">あなたに合った働き方を見つけましょう。</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 
+                  ========================================================================
+                  【重要】求人情報の追加方法
+                  新しい求人を追加する場合は、以下の <article> から </article> までの
+                  ブロックをコピーして、この下に追加して内容を書き換えてください。
+
+                  -タグのカラーリング(雇用形態)(丸)
+                  正社員 blue
+                  契約社員・嘱託社員 orange
+                  パート・アルバイト green
+                  短時間パート・アルバイト red
+                  業務委託 yellow
+                  その他 purple
+                  -タグのカラーリング(職種)(四角)
+                  一般事務・オフィスワーク blue
+                  軽作業・清掃・管理 orange
+                  IT・Web・クリエイティブ green
+                  コールセンター・カスタマーサポート red
+                  接客・販売・サービス yellow
+                  農福連携・屋外作業 sky
+                  専門職・企画・総合職 pink
+                  その他 purple
+                  ========================================================================
+                -->
+                
+                <!-- ▼▼▼ 求人アイテムのテンプレート（ここからコピー） ▼▼▼ -->
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                        <div>
+                            <!-- [編集箇所] 職種と雇用形態 -->
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-blue-100 text-blue-700 border border-blue-700 font-bold px-2 py-0 rounded-full">正社員</span>
+                                <span class="bg-green-100 text-green-700 border border-green-700 font-bold px-2 py-0 rounded">IT・Web・クリエイティブ</span>
+                            </div>
+                            <!-- [編集箇所] 企業名とキャッチコピー -->
+                            <h3 class="text-2xl font-bold text-gray-900 mb-1">株式会社サンプル・テクノロジー</h3>
+                            <p class="text-lg text-gray-700 font-medium">アクセシビリティテスター及びフロントエンド開発補助</p>
+                            <!-- [編集箇所] 募集対象 -->
+                            <div class="text-lg pt-1 text-gray-900 font-bold">-募集対象</div>
+                            <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">下肢・体幹障害</span>
+                            <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">上肢障害</span>
+                            <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">聴覚・言語障害</span>
+                        </div>
+                        <div class="text-right">
+                            <!-- [編集箇所] 掲載日 -->
+                            <p class="text-sm text-gray-500">掲載日: <time datetime="2026-09-15">2026年9月15日</time></p>
+                        </div>
+                    </div>
+
+                    <!-- ▼▼▼ 詳細を見る（プルダウン）ここから ▼▼▼ -->
+                    <details class="group bg-gray-50 rounded-lg border border-gray-100">
+                        <!-- プルダウンのボタン部分（クリックで開閉） -->
+                        <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
+                        <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
+                            <span>詳細を見る</span>
+                            <!-- 開閉に合わせて回転する矢印アイコン -->
+                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+
+                        <!-- 開いたときに表示される詳細内容 -->
+                        <div class="p-4 pt-0">
+                            <!-- ここに元々のグリッドを配置。上に境界線(border-t)を引いてボタンと区切ります -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-600 pt-4 border-t border-gray-200">
+                                <!-- [編集箇所] 各求人詳細項目 -->
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">給与</span>
+                                    <span class="text-gray-900">月給 220,000円 〜 350,000円</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
+                                    <span class="text-gray-900">港南区（フルリモート勤務可能）</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">業務内容</span>
+                                    <span class="text-gray-900">自社Webサービスのアクセシビリティチェック、改善提案、コーディング補助。</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
+                                    <span class="text-gray-900">通院のためのフレックスタイム制利用可能。産業医との定期面談あり。音声読み上げソフトの導入実績あり。</span>
+                                </div>
+                                <!-- ▼ 写真の挿入 ▼ -->
+                                <div class="mt-6 border-t border-gray-200 pt-4">
+                                    <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
+                                    <!-- src="..." の部分に画像のファイル名やURLを入れます -->
+                                    <img src="https://placehold.co/600x300?text=Office+Photo" alt="オフィスの風景" class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
+                                </div>
+                                <!-- ▲ 写真の挿入 ▲ -->
+                                <!-- ▼ 動画(MP4など)の挿入 ▼ -->
+                                <div class="mt-6 border-t border-gray-200 pt-4">
+                                    <span class="text-gray-500 text-xs font-bold mb-2 block">職場紹介動画</span>
+                                    <!-- controls を入れると再生・停止ボタンが表示されます。 src="..." を書き換えてください -->
+                                    <video controls class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
+                                        <source src="movie.mp4" type="video/mp4">
+                                        お使いのブラウザは動画の再生に対応していません。
+                                    </video>
+                                </div>
+                                <!-- ▲ 動画の挿入 ▲ -->
+                            </div>
+                            <div class="mt-6 border-t border-gray-200 pt-4">
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">興味のある方はこちら</span>
+                                    <a href="https://example.com" class="text-xl font-mono text-primary-700 hover:underline">
+                                        https://example.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- ▲▲▲ 詳細を見る（プルダウン）ここまで ▲▲▲ -->
+                </article>
+                <!-- ▲▲▲ 求人アイテムのテンプレート（ここまで） ▲▲▲ -->
+
+                <!-- ▼▼▼ 2つ目の求人アイテム例 ▼▼▼ -->
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-orange-100 text-orange-700 border border-orange-700 font-bold px-2 py-0 rounded-full">契約社員・嘱託社員</span>
+                                <span class="bg-blue-100 text-blue-700 border border-blue-700 font-bold px-2 py-0 rounded">一般事務・オフィスワーク</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-1">みらいサポート株式会社</h3>
+                            <p class="text-lg text-gray-700 font-medium">バックオフィス業務サポート（一般事務）</p>
+                            <div class="text-lg pt-1 text-gray-900 font-bold">-募集対象</div>
+                            <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">下肢・体幹障害</span>
+                            <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">上肢障害</span>
+                            <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">聴覚・言語障害</span>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-500">掲載日: <time datetime="2026-09-10">2026年9月10日</time></p>
+                        </div>
+                    </div>
+                    <!-- ▼▼▼ 詳細を見る（プルダウン）ここから ▼▼▼ -->
+                    <details class="group bg-gray-50 rounded-lg border border-gray-100">
+                        <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
+                            <span>詳細を見る</span>
+                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+
+                        <!-- 開いたときに表示される詳細内容 -->
+                        <div class="p-4 pt-0">
+                            <!-- ここに元々のグリッドを配置。上に境界線(border-t)を引いてボタンと区切ります -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">給与</span>
+                                    <span class="text-gray-900">時給 1,200円 〜</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
+                                    <span class="text-gray-900">南区（バリアフリー対応オフィス）</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">業務内容</span>
+                                    <span class="text-gray-900">データ入力、書類整理、社内備品の管理、その他付随する業務。</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
+                                    <span class="text-gray-900">車椅子用トイレ完備、段差なし。体調に合わせた短時間勤務（週20時間〜）の相談可能。</span>
+                                </div>
+                                <!-- ▼ 写真の挿入 ▼ -->
+                                <div class="mt-6 border-t border-gray-200 pt-4">
+                                    <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
+                                    <!-- src="..." の部分に画像のファイル名やURLを入れます -->
+                                    <img src="https://placehold.co/600x300?text=Office+Photo" alt="オフィスの風景" class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
+                                </div>
+                                <!-- ▲ 写真の挿入 ▲ -->
+                                <!-- ▼ 動画(MP4など)の挿入 ▼ -->
+                                <div class="mt-6 border-t border-gray-200 pt-4">
+                                    <span class="text-gray-500 text-xs font-bold mb-2 block">職場紹介動画</span>
+                                    <!-- controls を入れると再生・停止ボタンが表示されます。 src="..." を書き換えてください -->
+                                    <video controls class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
+                                        <source src="movie.mp4" type="video/mp4">
+                                        お使いのブラウザは動画の再生に対応していません。
+                                    </video>
+                                </div>
+                                <!-- ▲ 動画の挿入 ▲ -->
+                            </div>
+                            <div class="mt-6 border-t border-gray-200 pt-4">
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">興味のある方はこちら</span>
+                                    <a href="https://example.com" class="text-xl font-mono text-primary-700 hover:underline">
+                                        https://example.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- ▲▲▲ 詳細を見る（プルダウン）ここまで ▲▲▲ -->
+                </article>
+                <!-- ▲▲▲ 2つ目の求人アイテム例 ▲▲▲ -->
+
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ▼ タブパネル2：企業向け（掲載依頼方法） ▼ -->
+        <!-- ========================================== -->
+        <div id="panel-companies" class="tab-panel" role="tabpanel" aria-labelledby="tab-companies">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+                <h2 class="text-2xl font-bold text-primary-700 mb-4 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    求人掲載をご希望の企業様へ
+                </h2>
+                <p class="text-gray-700 mb-8 leading-relaxed">
+                    当掲示板への求人掲載は、メールにて受け付けております。<br>
+                    以下の「必須項目」をご記載の上、運営事務局のメールアドレスまでご連絡ください。<br>
+                    内容を確認次第、サイトへ掲載させていただきます。
+                </p>
+
+                <div class="bg-primary-50 rounded-lg p-6 mb-8 border border-primary-100">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">運営事務局 ご連絡先（メールアドレス）</h3>
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <!-- [編集箇所] 実際のメールアドレスに変更してください -->
+                        <a href="mailto:info@example.com" class="text-xl font-mono text-primary-700 hover:underline">
+                            info@example.com
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 必須項目 -->
+                    <div>
+                        <h3 class="text-lg font-bold text-red-600 border-b-2 border-red-200 pb-2 mb-4 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            お知らせいただく必須項目
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">1.</span> 企業名</li>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">2.</span> 募集職種（以下から選択・複数選択可）</li>
+                            <!-- ▼▼▼ 以下から選択（プルダウン）ここから ▼▼▼ -->
+                            <details class="group bg-gray-50 rounded-lg border border-gray-100">
+                                <!-- プルダウンのボタン部分（クリックで開閉） -->
+                                <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
+                                <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
+                                    <span>以下から選択</span>
+                                    <!-- 開閉に合わせて回転する矢印アイコン -->
+                                    <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </summary>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">1.</span> 一般事務・オフィスワーク</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">2.</span> 軽作業・清掃・管理</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">3.</span> IT・Web・クリエイティブ</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">4.</span> コールセンター・カスタマーサポート</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">5.</span> 接客・販売・サービス</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">6.</span> 農福連携・屋外作業</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">7.</span> 専門職・企画・総合職</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">8.</span> その他</li>
+                            </details>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">3.</span> 雇用形態（以下から選択・複数選択可）</li>
+                            <!-- ▼▼▼ 以下から選択（プルダウン）ここから ▼▼▼ -->
+                            <details class="group bg-gray-50 rounded-lg border border-gray-100">
+                                <!-- プルダウンのボタン部分（クリックで開閉） -->
+                                <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
+                                <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
+                                    <span>以下から選択</span>
+                                    <!-- 開閉に合わせて回転する矢印アイコン -->
+                                    <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </summary>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">1.</span> 正社員</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">2.</span> 契約社員・嘱託社員（フルタイム）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">3.</span> パート・アルバイト（週20時間以上）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">4.</span> 短時間パート・アルバイト（週20時間未満）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">5.</span> 業務委託</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">6.</span> その他</li>
+                            </details>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">4.</span> 募集対象の障害の種類（以下から選択・複数選択可）</li>
+                            <!-- ▼▼▼ 以下から選択（プルダウン）ここから ▼▼▼ -->
+                            <details class="group bg-gray-50 rounded-lg border border-gray-100">
+                                <!-- プルダウンのボタン部分（クリックで開閉） -->
+                                <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
+                                <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
+                                    <span>以下から選択</span>
+                                    <!-- 開閉に合わせて回転する矢印アイコン -->
+                                    <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </summary>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">01.</span> 下肢・体幹障害（車椅子や杖の使用など）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">02.</span> 上肢障害（腕や手の不自由さ）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">03.</span> 視覚障害（全盲・弱視・視野狭窄など）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">04.</span> 聴覚・言語障害（ろう者・難聴・発声困難など）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">05.</span> 内部障害（心臓・腎臓・呼吸器疾患・人工透析など）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">06.</span> 知的障害</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">07.</span> 気分障害（うつ病・双極性障害など）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">08.</span> 統合失調症・不安障害など</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">09.</span> てんかん</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">10.</span> ASD（自閉スペクトラム症/アスペルガー症候群など）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">11.</span> ADHD（注意欠如・多動症）</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">12.</span> LD（学習障害/読み書き・計算の困難）</li>
+                            </details>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">5.</span> 業務内容（できるだけ具体的に）</li>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">6.</span> 勤務地（住所または店舗名）（テレワークの可否も含む）</li>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">7.</span> 給与・待遇</li>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">8.</span> 障害に対する配慮事項・設備状況<br>
+                                <span class="text-sm text-gray-500 mt-1 block">（例：車椅子用トイレの有無、通院への配慮、産業医の有無など）</span>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">9.</span> 会社のURL・Webサイトまたは求人募集のWebサイト・メールアドレス<br>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 任意項目 -->
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-700 border-b-2 border-gray-200 pb-2 mb-4 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            </svg>
+                            お知らせいただけるとよい任意項目
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> 会社の雰囲気・社風</li>
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> 職場の雰囲気がわかる写真・動画</li>
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> アピールポイント</li>
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> 採用担当者からのメッセージ</li>
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> 福利厚生の詳細</li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-600 border border-gray-200">
+                            <strong>ヒント:</strong><br>
+                            任意項目もご提供いただくことで、求職者にとってより具体的で安心できる情報となり、マッチング率の向上が期待できます。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white mt-auto">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-400">
+            &copy; 2026 だれでもDOOR All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript: タブの切り替え処理 -->
+    <script>
+        /**
+         * タブを切り替える関数
+         * @param {string} targetTabName - 'job-seekers' または 'companies'
+         */
+        function switchTab(targetTabName) {
+            // 要素の取得
+            const tabBtnJobSeekers = document.getElementById('tab-job-seekers');
+            const tabBtnCompanies = document.getElementById('tab-companies');
+            const panelJobSeekers = document.getElementById('panel-job-seekers');
+            const panelCompanies = document.getElementById('panel-companies');
+
+            // --- 状態のリセット（非アクティブ化） ---
+            
+            // パネルをすべて非表示
+            panelJobSeekers.classList.remove('active');
+            panelCompanies.classList.remove('active');
+            
+            // ボタンのスタイルとAria属性を初期化
+            [tabBtnJobSeekers, tabBtnCompanies].forEach(btn => {
+                // アクティブ時のスタイルを削除
+                btn.classList.remove('border-primary-600', 'text-primary-700', 'bg-primary-50');
+                // 非アクティブ時のスタイルを追加
+                btn.classList.add('border-transparent', 'text-gray-500');
+                // アクセシビリティ属性の更新
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            // --- 選択されたタブの有効化 ---
+            if (targetTabName === 'job-seekers') {
+                // 求職者タブをアクティブに
+                panelJobSeekers.classList.add('active');
+                
+                tabBtnJobSeekers.classList.remove('border-transparent', 'text-gray-500');
+                tabBtnJobSeekers.classList.add('border-primary-600', 'text-primary-700', 'bg-primary-50');
+                tabBtnJobSeekers.setAttribute('aria-selected', 'true');
+                
+            } else if (targetTabName === 'companies') {
+                // 企業向けタブをアクティブに
+                panelCompanies.classList.add('active');
+                
+                tabBtnCompanies.classList.remove('border-transparent', 'text-gray-500');
+                tabBtnCompanies.classList.add('border-primary-600', 'text-primary-700', 'bg-primary-50');
+                tabBtnCompanies.setAttribute('aria-selected', 'true');
+            }
+        }
+    </script>
+</body>
