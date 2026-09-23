@@ -65,13 +65,21 @@
     <!-- メインコンテンツ -->
     <main class="flex-grow max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
 
-        <div class="mb-8 font-bold text-4xl text-red-700">
+        <!-- お知らせバナーここから -->
+        <div id="notice-banner" style="background-color: #e0f2fe; color: #FF0000; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 30px;">
+        <span>
+            <!--お知らせ内容入力-->
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FF0000">
-                <path d="M449.5-85Q435-91 423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6q-16 0-30.5-6Zm30.5-74 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm68.5 108.5Q520-343 520-360t-11.5-28.5Q497-400 480-400t-28.5 11.5Q440-377 440-360t11.5 28.5Q463-320 480-320t28.5-11.5ZM480-480Z"/></svg>
-            このWebサイトは開発中です <br>
-            掲載されている求人は実在しません
+            <path d="M449.5-85Q435-91 423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6q-16 0-30.5-6Zm30.5-74 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm68.5 108.5Q520-343 520-360t-11.5-28.5Q497-400 480-400t-28.5 11.5Q440-377 440-360t11.5 28.5Q463-320 480-320t28.5-11.5ZM480-480Z"/></svg>
+            <b>このWebサイトは開発中です <br>
+            掲載されている求人は実在しません</b>
+        </span>
+        <button onclick="document.getElementById('notice-banner').style.display='none'" style="background: none; border: none; font-size: 30px; cursor: pointer; color: #0369a1; padding: 0 5px;">
+            ×
+        </button>
         </div>
-        
+        <!-- お知らせバナーここまで -->
+
         <!-- タブナビゲーション (アクセシビリティに配慮したrole属性を使用) -->
         <div class="mb-8" role="tablist" aria-label="コンテンツの切り替え">
             <div class="flex border-b border-gray-300">
