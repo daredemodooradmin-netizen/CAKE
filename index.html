@@ -133,48 +133,109 @@
                   その他 purple
                   ========================================================================
                 -->
-                
-                <!-- ▼▼▼ 求人アイテムのテンプレート（ここからコピー） ▼▼▼ -->
+
+                <!-- 
+                  ========================================================================
+                 ▼▼▼ 求人アイテムのテンプレート（ここからコピー） ▼▼▼ 
                 <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                         <div>
-                            <!-- [編集箇所] 職種と雇用形態 -->
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-色-100 text-色-700 border border-色-700 font-bold px-2 py-0 rounded-full">雇用形態</span>
+                                <span class="bg-色-100 text-色-700 border border-色-700 font-bold px-2 py-0 rounded">募集職種</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-1">企業名</h3>
+                            <p class="text-lg text-gray-700 font-medium">キャッチコピー</p>
+                            <div class="text-lg pt-1 text-gray-900 font-bold">-募集対象</div>
+                            <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">障害の種類</span>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-500">掲載日: <time datetime="2026-09-15">yyyy年mm月dd日</time></p>
+                        </div>
+                    </div>
+
+                    <details class="group bg-gray-50 rounded-lg border border-gray-100">
+                        <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
+                            <span>詳細を見る</span>
+                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+
+                        <div class="p-4 pt-0">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-600 pt-4 border-t border-gray-200">
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">給与</span>
+                                    <span class="text-gray-900">給与入力</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
+                                    <span class="text-gray-900">勤務地入力</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">業務内容</span>
+                                    <span class="text-gray-900">業務内容入力</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
+                                    <span class="text-gray-900">配慮事項の受け入れ体制入力</span>
+                                </div>
+                                <div class="mt-6 border-t border-gray-200 pt-4">
+                                    <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
+                                    <img src="写真のリンク,ファイル名" alt="オフィスの風景" class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
+                                </div>
+                                <div class="mt-6 border-t border-gray-200 pt-4">
+                                    <span class="text-gray-500 text-xs font-bold mb-2 block">職場紹介動画</span>
+                                    <video controls class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
+                                        <source src="動画のリンク,ファイル名" type="video/mp4">
+                                        お使いのブラウザは動画の再生に対応していません。
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="mt-6 border-t border-gray-200 pt-4">
+                                <div class="flex flex-col">
+                                    <span class="text-gray-500 text-xs font-bold mb-1">興味のある方はこちら</span>
+                                    <a href="企業のリンク,メアド" class="text-xl font-mono text-primary-700 hover:underline">
+                                        企業のリンク,メアド
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </article>
+                 ▲▲▲ 求人アイテムのテンプレート（ここまで） ▲▲▲ 
+                  ========================================================================
+                -->
+                
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                        <div>
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="bg-blue-100 text-blue-700 border border-blue-700 font-bold px-2 py-0 rounded-full">正社員</span>
                                 <span class="bg-green-100 text-green-700 border border-green-700 font-bold px-2 py-0 rounded">IT・Web・クリエイティブ</span>
                             </div>
-                            <!-- [編集箇所] 企業名とキャッチコピー -->
                             <h3 class="text-2xl font-bold text-gray-900 mb-1">株式会社サンプル・テクノロジー</h3>
                             <p class="text-lg text-gray-700 font-medium">アクセシビリティテスター及びフロントエンド開発補助</p>
-                            <!-- [編集箇所] 募集対象 -->
                             <div class="text-lg pt-1 text-gray-900 font-bold">-募集対象</div>
                             <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">下肢・体幹障害</span>
                             <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">上肢障害</span>
                             <span class="text-lg font-bold border border-gray-300 px-1 py-1 rounded">聴覚・言語障害</span>
                         </div>
                         <div class="text-right">
-                            <!-- [編集箇所] 掲載日 -->
                             <p class="text-sm text-gray-500">掲載日: <time datetime="2026-09-15">2026年9月15日</time></p>
                         </div>
                     </div>
 
-                    <!-- ▼▼▼ 詳細を見る（プルダウン）ここから ▼▼▼ -->
                     <details class="group bg-gray-50 rounded-lg border border-gray-100">
-                        <!-- プルダウンのボタン部分（クリックで開閉） -->
-                        <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
                         <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
                             <span>詳細を見る</span>
-                            <!-- 開閉に合わせて回転する矢印アイコン -->
                             <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </summary>
 
-                        <!-- 開いたときに表示される詳細内容 -->
                         <div class="p-4 pt-0">
-                            <!-- ここに元々のグリッドを配置。上に境界線(border-t)を引いてボタンと区切ります -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-600 pt-4 border-t border-gray-200">
-                                <!-- [編集箇所] 各求人詳細項目 -->
                                 <div class="flex flex-col">
                                     <span class="text-gray-500 text-xs font-bold mb-1">給与</span>
                                     <span class="text-gray-900">月給 220,000円 〜 350,000円</span>
@@ -191,23 +252,17 @@
                                     <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
                                     <span class="text-gray-900">通院のためのフレックスタイム制利用可能。産業医との定期面談あり。音声読み上げソフトの導入実績あり。</span>
                                 </div>
-                                <!-- ▼ 写真の挿入 ▼ -->
                                 <div class="mt-6 border-t border-gray-200 pt-4">
                                     <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
-                                    <!-- src="..." の部分に画像のファイル名やURLを入れます -->
                                     <img src="https://placehold.co/600x300?text=Office+Photo" alt="オフィスの風景" class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
                                 </div>
-                                <!-- ▲ 写真の挿入 ▲ -->
-                                <!-- ▼ 動画(MP4など)の挿入 ▼ -->
                                 <div class="mt-6 border-t border-gray-200 pt-4">
                                     <span class="text-gray-500 text-xs font-bold mb-2 block">職場紹介動画</span>
-                                    <!-- controls を入れると再生・停止ボタンが表示されます。 src="..." を書き換えてください -->
                                     <video controls class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
                                         <source src="movie.mp4" type="video/mp4">
                                         お使いのブラウザは動画の再生に対応していません。
                                     </video>
                                 </div>
-                                <!-- ▲ 動画の挿入 ▲ -->
                             </div>
                             <div class="mt-6 border-t border-gray-200 pt-4">
                                 <div class="flex flex-col">
@@ -219,11 +274,8 @@
                             </div>
                         </div>
                     </details>
-                    <!-- ▲▲▲ 詳細を見る（プルダウン）ここまで ▲▲▲ -->
                 </article>
-                <!-- ▲▲▲ 求人アイテムのテンプレート（ここまで） ▲▲▲ -->
 
-                <!-- ▼▼▼ 2つ目の求人アイテム例 ▼▼▼ -->
                 <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                         <div>
@@ -242,7 +294,6 @@
                             <p class="text-sm text-gray-500">掲載日: <time datetime="2026-09-10">2026年9月10日</time></p>
                         </div>
                     </div>
-                    <!-- ▼▼▼ 詳細を見る（プルダウン）ここから ▼▼▼ -->
                     <details class="group bg-gray-50 rounded-lg border border-gray-100">
                         <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
                             <span>詳細を見る</span>
@@ -251,9 +302,7 @@
                             </svg>
                         </summary>
 
-                        <!-- 開いたときに表示される詳細内容 -->
                         <div class="p-4 pt-0">
-                            <!-- ここに元々のグリッドを配置。上に境界線(border-t)を引いてボタンと区切ります -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
                                 <div class="flex flex-col">
                                     <span class="text-gray-500 text-xs font-bold mb-1">給与</span>
@@ -271,23 +320,17 @@
                                     <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
                                     <span class="text-gray-900">車椅子用トイレ完備、段差なし。体調に合わせた短時間勤務（週20時間〜）の相談可能。</span>
                                 </div>
-                                <!-- ▼ 写真の挿入 ▼ -->
                                 <div class="mt-6 border-t border-gray-200 pt-4">
                                     <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
-                                    <!-- src="..." の部分に画像のファイル名やURLを入れます -->
                                     <img src="https://placehold.co/600x300?text=Office+Photo" alt="オフィスの風景" class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
                                 </div>
-                                <!-- ▲ 写真の挿入 ▲ -->
-                                <!-- ▼ 動画(MP4など)の挿入 ▼ -->
                                 <div class="mt-6 border-t border-gray-200 pt-4">
                                     <span class="text-gray-500 text-xs font-bold mb-2 block">職場紹介動画</span>
-                                    <!-- controls を入れると再生・停止ボタンが表示されます。 src="..." を書き換えてください -->
                                     <video controls class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
                                         <source src="movie.mp4" type="video/mp4">
                                         お使いのブラウザは動画の再生に対応していません。
                                     </video>
                                 </div>
-                                <!-- ▲ 動画の挿入 ▲ -->
                             </div>
                             <div class="mt-6 border-t border-gray-200 pt-4">
                                 <div class="flex flex-col">
@@ -299,9 +342,7 @@
                             </div>
                         </div>
                     </details>
-                    <!-- ▲▲▲ 詳細を見る（プルダウン）ここまで ▲▲▲ -->
                 </article>
-                <!-- ▲▲▲ 2つ目の求人アイテム例 ▲▲▲ -->
 
             </div>
         </div>
@@ -330,8 +371,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                         <!-- [編集箇所] 実際のメールアドレスに変更してください -->
-                        <a href="mailto:info@example.com" class="text-xl font-mono text-primary-700 hover:underline">
-                            info@example.com
+                        <a href="mailto:daredemoDOOR.admin@gmail.com" class="text-xl font-mono text-primary-700 hover:underline">
+                            daredemoDOOR.admin@gmail.com
                         </a>
                     </div>
                 </div>
