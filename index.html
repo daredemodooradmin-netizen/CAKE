@@ -275,7 +275,7 @@
                             <div class="mt-6 border-t border-gray-200 pt-4">
                                 <div class="flex flex-col">
                                     <span class="text-gray-500 text-xs font-bold mb-1">興味のある方はこちら</span>
-                                    <a href="https://example.com" class="text-xl font-mono text-primary-700 hover:underline">
+                                    <a href="https://example.com" class="text-xl font-mono text-primary-700 hover:underline" style="word-wrap: break-word; min-width: 0;">
                                         https://example.com
                                     </a>
                                 </div>
@@ -343,7 +343,7 @@
                             <div class="mt-6 border-t border-gray-200 pt-4">
                                 <div class="flex flex-col">
                                     <span class="text-gray-500 text-xs font-bold mb-1">興味のある方はこちら</span>
-                                    <a href="https://example.com" class="text-xl font-mono text-primary-700 hover:underline">
+                                    <a href="https://example.com" class="text-xl font-mono text-primary-700 hover:underline" style="word-wrap: break-word; min-width: 0;">
                                         https://example.com
                                     </a>
                                 </div>
@@ -379,7 +379,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                         <!-- [編集箇所] 実際のメールアドレスに変更してください -->
-                        <a href="mailto:daredemoDOOR.admin@gmail.com" class="text-xl font-mono text-primary-700 hover:underline">
+                        <a href="mailto:daredemoDOOR.admin@gmail.com" class="text-xl font-mono text-primary-700 hover:underline" style="word-wrap: break-word; min-width: 0;">
                             daredemoDOOR.admin@gmail.com
                         </a>
                     </div>
@@ -402,7 +402,7 @@
                                 <!-- プルダウンのボタン部分（クリックで開閉） -->
                                 <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
                                 <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
-                                    <span>以下から選択</span>
+                                    <span>以下から選択・複数選択可</span>
                                     <!-- 開閉に合わせて回転する矢印アイコン -->
                                     <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -423,7 +423,7 @@
                                 <!-- プルダウンのボタン部分（クリックで開閉） -->
                                 <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
                                 <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
-                                    <span>以下から選択</span>
+                                    <span>以下から選択・複数選択可</span>
                                     <!-- 開閉に合わせて回転する矢印アイコン -->
                                     <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -442,7 +442,7 @@
                                 <!-- プルダウンのボタン部分（クリックで開閉） -->
                                 <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
                                 <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
-                                    <span>以下から選択</span>
+                                    <span>以下から選択・複数選択可</span>
                                     <!-- 開閉に合わせて回転する矢印アイコン -->
                                     <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -464,10 +464,12 @@
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">5.</span> 業務内容（できるだけ具体的に）</li>
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">6.</span> 勤務地（住所または店舗名）（テレワークの可否も含む）</li>
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">7.</span> 給与・待遇</li>
-                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">8.</span> 障害に対する配慮事項・設備状況<br>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">8.</span>
+                                <div>
+                                障害に対する配慮事項・設備状況
                                 <span class="text-sm text-gray-500 mt-1 block">（例：車椅子用トイレの有無、通院への配慮、産業医の有無など）</span>
-                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">9.</span> 会社のURL・Webサイトまたは求人募集のWebサイト・メールアドレス<br>
-                            </li>
+                                </div>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">9.</span> 会社のURL・Webサイトまたは求人募集のWebサイト・メールアドレス</li>
                         </ul>
                     </div>
 
