@@ -116,7 +116,7 @@
             新しい求人を追加する場合は、以下の <article> から </article> までの
             ブロックをコピーして、この下に追加して内容を書き換えてください。
 
-            -タグのカラーリング(雇用形態)(丸)
+            - タグのカラーリング(雇用形態)(丸)
             正社員 blue
             契約社員・嘱託社員 orange
             パート・アルバイト green
@@ -124,7 +124,7 @@
             業務委託 yellow
             その他 purple
 
-            -タグのカラーリング(職種)(四角)
+            - タグのカラーリング(職種)(四角)
             一般事務・オフィスワーク blue
             軽作業・清掃・管理 orange
             IT・Web・クリエイティブ green
@@ -133,6 +133,12 @@
             農福連携・屋外作業 sky
             専門職・企画・総合職 pink
             その他 purple
+
+            - 配慮事項・設備状況の編集方法
+            各項目の <input> タグの中にある「checked」という単語を変更
+            - あり (True)  にしたい時 → <input type="checkbox" checked ...>
+            - なし (False) にしたい時 → <input type="checkbox" ...> （checkedを消す）
+
             ========================================================================
         -->
 
@@ -186,10 +192,83 @@
                             <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
                             <span class="text-gray-900">勤務地入力</span>
                         </div>
-                        
-                        <div class="flex flex-col">
-                            <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
-                            <span class="text-gray-900">配慮事項の受け入れ体制入力</span>
+                        <div class="col-span-1 md:col-span-2 border-t border-gray-100 pt-4 mt-2">
+                            <span class="text-gray-500 text-xs font-bold mb-3 block">配慮事項・設備状況</span>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-2 mb-5 pointer-events-none">
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">段差なし・車椅子用通路</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">車椅子対応トイレ</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">エレベーター</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">専用の休憩室</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">視覚障害者への補助ソフト・補助具</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">聴覚障害者への補助ソフト・補助具</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">イヤマフ・サングラス・帽子などの着用許可</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">自動車・自転車通勤の許可</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">通院のための配慮あり</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">電話応対の免除</span>
+                                </label>
+                                <label class="flex items-start gap-2 relative">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">ジョブコーチ（職場適応援助者）の受け入れ実績</span>
+                                </label>
+                            </div>
+                            <div class="bg-white p-3.5 rounded-md border border-gray-200">
+                                <span class="text-gray-400 text-[11px] font-bold block mb-1.5">その他の配慮・補足（自由記述）</span>
+                                <p class="text-gray-700 text-sm leading-relaxed">
+                                    自由記述
+                                </p>
+                            </div>
+                        </div>
                         </div>
                         <div class="mt-6 border-t border-gray-200 pt-4">
                             <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
@@ -311,9 +390,82 @@
                                             <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
                                             <span class="text-gray-900">港南区（フルリモート勤務可能）</span>
                                         </div>
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
-                                            <span class="text-gray-900">通院のためのフレックスタイム制利用可能。産業医との定期面談あり。音声読み上げソフトの導入実績あり。</span>
+                                        <div class="col-span-1 md:col-span-2 border-t border-gray-100 pt-4 mt-2">
+                                            <span class="text-gray-500 text-xs font-bold mb-3 block">配慮事項・設備状況</span>
+                                            <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-2 mb-5 pointer-events-none">
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">段差なし・車椅子用通路</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">車椅子対応トイレ</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">エレベーター</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">専用の休憩室</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">視覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">聴覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">イヤマフ・サングラス・帽子などの着用許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">自動車・自転車通勤の許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">通院のための配慮あり</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">電話応対の免除</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">ジョブコーチ（職場適応援助者）の受け入れ実績</span>
+                                                </label>
+                                            </div>
+                                            <div class="bg-white p-3.5 rounded-md border border-gray-200">
+                                                <span class="text-gray-400 text-[11px] font-bold block mb-1.5">その他の配慮・補足（自由記述）</span>
+                                                <p class="text-gray-700 text-sm leading-relaxed">
+                                                    自由記述
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="mt-6 border-t border-gray-200 pt-4">
                                             <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
@@ -392,10 +544,82 @@
                                             <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
                                             <span class="text-gray-900">南区（バリアフリー対応オフィス）</span>
                                         </div>
-                                        
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
-                                            <span class="text-gray-900">車椅子用トイレ完備、段差なし。体調に合わせた短時間勤務（週20時間〜）の相談可能。</span>
+                                        <div class="col-span-1 md:col-span-2 border-t border-gray-100 pt-4 mt-2">
+                                            <span class="text-gray-500 text-xs font-bold mb-3 block">配慮事項・設備状況</span>
+                                            <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-2 mb-5 pointer-events-none">
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">段差なし・車椅子用通路</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">車椅子対応トイレ</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">エレベーター</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">専用の休憩室</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">視覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">聴覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">イヤマフ・サングラス・帽子などの着用許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">自動車・自転車通勤の許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">通院のための配慮あり</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">電話応対の免除</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">ジョブコーチ（職場適応援助者）の受け入れ実績</span>
+                                                </label>
+                                            </div>
+                                            <div class="bg-white p-3.5 rounded-md border border-gray-200">
+                                                <span class="text-gray-400 text-[11px] font-bold block mb-1.5">その他の配慮・補足（自由記述）</span>
+                                                <p class="text-gray-700 text-sm leading-relaxed">
+                                                    自由記述
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="mt-6 border-t border-gray-200 pt-4">
                                             <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
@@ -478,10 +702,82 @@
                                             <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
                                             <span class="text-gray-900">南区（バリアフリー対応オフィス）</span>
                                         </div>
-                                        
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
-                                            <span class="text-gray-900">車椅子用トイレ完備、段差なし。体調に合わせた短時間勤務（週20時間〜）の相談可能。</span>
+                                        <div class="col-span-1 md:col-span-2 border-t border-gray-100 pt-4 mt-2">
+                                            <span class="text-gray-500 text-xs font-bold mb-3 block">配慮事項・設備状況</span>
+                                            <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-2 mb-5 pointer-events-none">
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">段差なし・車椅子用通路</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">車椅子対応トイレ</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">エレベーター</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">専用の休憩室</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">視覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">聴覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">イヤマフ・サングラス・帽子などの着用許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">自動車・自転車通勤の許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">通院のための配慮あり</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">電話応対の免除</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">ジョブコーチ（職場適応援助者）の受け入れ実績</span>
+                                                </label>
+                                            </div>
+                                            <div class="bg-white p-3.5 rounded-md border border-gray-200">
+                                                <span class="text-gray-400 text-[11px] font-bold block mb-1.5">その他の配慮・補足（自由記述）</span>
+                                                <p class="text-gray-700 text-sm leading-relaxed">
+                                                    自由記述
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="mt-6 border-t border-gray-200 pt-4">
                                             <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
@@ -563,10 +859,82 @@
                                             <span class="text-gray-500 text-xs font-bold mb-1">勤務地</span>
                                             <span class="text-gray-900">南区（バリアフリー対応オフィス）</span>
                                         </div>
-                                        
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-500 text-xs font-bold mb-1">配慮事項の受け入れ体制</span>
-                                            <span class="text-gray-900">車椅子用トイレ完備、段差なし。体調に合わせた短時間勤務（週20時間〜）の相談可能。</span>
+                                        <div class="col-span-1 md:col-span-2 border-t border-gray-100 pt-4 mt-2">
+                                            <span class="text-gray-500 text-xs font-bold mb-3 block">配慮事項・設備状況</span>
+                                            <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-2 mb-5 pointer-events-none">
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">段差なし・車椅子用通路</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">車椅子対応トイレ</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">エレベーター</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">専用の休憩室</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">視覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">聴覚障害者への補助ソフト・補助具</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">イヤマフ・サングラス・帽子などの着用許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">自動車・自転車通勤の許可</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">通院のための配慮あり</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">電話応対の免除</span>
+                                                </label>
+                                                <label class="flex items-start gap-2 relative">
+                                                    <input type="checkbox" checked class="peer sr-only">
+                                                    <svg class="w-5 h-5 text-gray-300 shrink-0 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                                                    <svg class="w-5 h-5 text-blue-600 shrink-0 hidden peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 12l2 2 4-4"></path></svg>
+                                                    <span class="text-sm text-gray-400 peer-checked:text-gray-900 peer-checked:font-medium">ジョブコーチ（職場適応援助者）の受け入れ実績</span>
+                                                </label>
+                                            </div>
+                                            <div class="bg-white p-3.5 rounded-md border border-gray-200">
+                                                <span class="text-gray-400 text-[11px] font-bold block mb-1.5">その他の配慮・補足（自由記述）</span>
+                                                <p class="text-gray-700 text-sm leading-relaxed">
+                                                    自由記述
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="mt-6 border-t border-gray-200 pt-4">
                                             <span class="text-gray-500 text-xs font-bold mb-2 block">オフィスの様子</span>
@@ -660,13 +1028,9 @@
                                 <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">3.</span> 就労継続支援B型</li>
                             </details>
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">03.</span> 募集職種（以下から選択・複数選択可）</li>
-                            <!-- ▼▼▼ 以下から選択（プルダウン）ここから ▼▼▼ -->
                             <details class="group bg-gray-50 rounded-lg border border-gray-100">
-                                <!-- プルダウンのボタン部分（クリックで開閉） -->
-                                <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
                                 <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
                                     <span>以下から選択・複数選択可</span>
-                                    <!-- 開閉に合わせて回転する矢印アイコン -->
                                     <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -700,13 +1064,9 @@
                                 <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">6.</span> その他</li>
                             </details>
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">05.</span> 募集対象の障害の種類（以下から選択・複数選択可）</li>
-                            <!-- ▼▼▼ 以下から選択（プルダウン）ここから ▼▼▼ -->
                             <details class="group bg-gray-50 rounded-lg border border-gray-100">
-                                <!-- プルダウンのボタン部分（クリックで開閉） -->
-                                <!-- list-none と [&::-webkit-details-marker]:hidden でデフォルトの黒い三角を隠しています -->
                                 <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
                                     <span>以下から選択・複数選択可</span>
-                                    <!-- 開閉に合わせて回転する矢印アイコン -->
                                     <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -727,12 +1087,28 @@
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">06.</span> 業務内容（できるだけ具体的に）</li>
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">07.</span> 勤務時間（曜日,時間帯,1ヶ月辺りの勤務時間など）</li>
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">08.</span> 勤務地（住所または店舗名）（テレワークの可否も含む）</li>
-                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">09.</span> 給与・工賃</li>
-                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">10.</span>
-                                <div>
-                                障害に対する配慮事項・設備状況
-                                <span class="text-sm text-gray-500 mt-1 block">（例：車椅子用トイレの有無、通院への配慮、産業医の有無など）</span>
-                                </div>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">09.</span> 給与・工賃 </li>
+                            <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">10.</span> 障害に対する配慮事項・設備状況 </li>
+                            <details class="group bg-gray-50 rounded-lg border border-gray-100">
+                                <summary class="flex justify-between items-center cursor-pointer p-0 font-bold text-blue-600 hover:bg-gray-100 transition-colors rounded-lg list-none [&::-webkit-details-marker]:hidden">
+                                    <span>以下から選択・複数選択可</span>
+                                    <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </summary>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">01.</span> 段差なし・車椅子用通路 </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">02.</span> 車椅子対応トイレ </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">03.</span> エレベーター </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">04.</span> 専用の休憩室 </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">05.</span> 視覚障害者への補助ソフト・補助具 </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">06.</span> 聴覚障害者への補助ソフト・補助具 </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">07.</span> イヤマフ・サングラス・帽子などの着用許可 </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">08.</span> 自動車・自転車通勤の許可</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">09.</span> 通院のための配慮あり </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">10.</span> 電話応対の免除 </li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">11.</span> ジョブコーチ（職場適応援助者）の受け入れ実績</li>
+                                <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">12.</span> その他（自由記述）</li>
+                            </details>
                             <li class="flex items-start"><span class="mr-2 font-bold text-gray-400">11.</span> 会社のURL・Webサイトまたは求人募集のWebサイト・メールアドレス</li>
                         </ul>
                     </div>
@@ -755,7 +1131,7 @@
                         </ul>
                         <div class="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-600 border border-gray-200">
                             <strong>注意:</strong><br>
-                            <div>サイトの負荷軽減のため、任意項目のテキストは200文字以内にまとめてください。</div>
+                            <div>サイトの負荷軽減のため、自由記述のテキストは各項目200文字以内にまとめてください。</div>
                             <div>任意項目もご提供いただくことで、求職者にとってより具体的で安心できる情報となり、マッチング率の向上が期待できます。</div>
                         </div>
                     </div>
